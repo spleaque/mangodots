@@ -1,0 +1,193 @@
+{
+  "layer": "top",
+  "height": 20,
+  "margin-top": 5,
+  "margin-right": 5,
+  "margin-left": 5,
+  "spacing": 4,
+  "modules-left": [
+    "ext/workspaces",
+    "dwl/window"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "disk",
+    "pulseaudio",
+    "network",
+    "backlight",
+    "custom/layout",
+    "battery"
+  ],
+  "custom/rofi": {
+    "format": "<span ></span>",
+    "on-click": "rofi -show drun -disable-history -show-icons -theme-str 'window { width: 22% ; location: northwest; margin: 10px 0 0 10px; } listview { lines: 20; }'",
+    "on-click-right": "~/.config/custom_scripts/power.sh",
+    "escape": true,
+    "tooltip": false
+  },
+  // Modules configuration
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "active-only": false,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "<span>󰧨</span>",
+      "2": "<span>󰈹</span>",
+      "3": "<span></span>",
+      "4": "<span></span>",
+      "5": "<span></span>",
+      "6": "<span>󰭛</span>",
+      "7": "<span>󱓷</span>",
+      "8": "<span>󰚀</span>"
+    }
+  },
+  "sway/window": {
+    "format": "<span color='#f6c657' > 󰣆 </span>{app_id}",
+    "separate-outputs": true,
+    "tooltip": false
+  },
+  "sway/mode": {
+    "format": " {}",
+    "max-length": 50
+  },
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "active-only": false,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "<span>󰧨</span>",
+      "2": "<span>󰈹</span>",
+      "3": "<span></span>",
+      "4": "<span></span>",
+      "5": "<span></span>",
+      "6": "<span>󰭛</span>",
+      "7": "<span>󱓷</span>",
+      "8": "<span>󰚀</span>"
+    }
+  },
+  "hyprland/window": {
+    "format": "<span color='#f6c657' > 󰣆 </span>{class}",
+    "separate-outputs": true,
+    "icon": false,
+    "tooltip": false
+  },
+  "hyprland/submap": {
+    "format": " {}",
+    "max-length": 50
+  },
+  "tray": {
+    "icon-size": 14,
+    "spacing": 8
+  },
+  "disk": {
+    "format": "<span color='#e8b5b9'>    </span>{free}",
+    "interval": 20
+  },
+  "cpu": {
+    "format": "<span color='#e78a4e' >  </span>{usage}%",
+    "tooltip": false,
+    "interval": 1,
+    "on-click-right": "~/.config/custom_scripts/launch_tui.sh btop"
+  },
+  "custom/cpu_temp": {
+    "exec": "~/.config/waybar/scripts/waybarTemp.sh",
+    "return-type": "json",
+    "interval": 2,
+    "format": "{}",
+    "tooltip": false
+  },
+  "backlight": {
+    // "device": "acpi_video1",
+    "format": "<span color='#c7979b'> 󰞏   </span>{percent}%",
+    "tooltip": false,
+    "on-click-right": "~/.config/custom_scripts/wlsunset.sh"
+  },
+  "custom/memory": {
+    "exec": "~/.config/waybar/scripts/memory_usage.sh",
+    "interval": 2,
+    "return-type": "json",
+    "format": "<span color='#458588' >  </span>{}"
+  },
+  "pulseaudio": {
+    "scroll-step": 1,
+    "format": "<span color='#d1a1a5'>    </span>{volume}%",
+    "format-muted": "<span color='#ea6962'>    </span>{volume}%",
+    "format-bluetooth": "<span color='#83a598' > 󰂰 </span>{volume}%",
+    "format-bluetooth-muted": "<span color='#ea6962' > 󰂲 </span>{volume}%",
+    "format-source": "{volume}% ",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "~/.config/custom_scripts/launch_tui.sh wiremix",
+    "tooltip": false,
+    "max-volume": 130
+  },
+  "battery#bat2": {
+    "bat": "BAT2"
+  },
+  "battery": {
+    "interval": 1,
+    "states": {
+      "good": 99,
+      "warning": 30,
+      "critical": 20
+    },
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ],
+    "format": "<span color='#e6acb1'> {icon}   </span>{capacity}%",
+    "format-critical": "<span color='#cc241d'> {icon}   </span>{capacity}%!!",
+    "format-warning": "<span color='#e78a4e'> {icon}   </span>{capacity}%",
+    "format-full": "<span color='#689d6a'> {icon}   </span>{capacity}%",
+    "format-charging": "<span color='#689d6a'> 󰂅   </span>{capacity}%",
+    "format-charging-warning": "<span color='#e78a4e'> 󰢝   </span>{capacity}%",
+    "format-charging-critical": "<span color='#cc241d'> 󰢜   </span>{capacity}%",
+    "format-plugged": "<span color='#689d6a'> 󰂅   </span>{capacity}%",
+    "format-alt": "<span color='#689d6a'> 󱧥   </span>{time}",
+    "tooltip": false
+  },
+  "network": {
+    "interval": 2,
+    "format": "<span color='#b58a8d'> 󱘖 </span>{bandwidthDownBits}",
+    "format-wifi": "<span color='#b58a8d'> {icon}   </span>{bandwidthDownBits}",
+    "format-ethernet": "<span color='#d3869b'> 󰈀 </span>{bandwidthDownBits}",
+    "format-icons": [
+      "󰤫",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "tooltip": false,
+    "states": {
+      "normal": 25
+    }
+  },
+  "clock": {
+    // "timezone": "America/New_York",
+    "format": "<span color='#ffc8cd'>     </span>{:%H:%M | %a %d}",
+    "tooltip": false,
+    "interval": 1
+  },
+  "custom/layout": {
+    "exec":"mmsg -g -l | awk '{print $3}' ",
+    "interval": 1,
+    "format": "<span color='#e8b5b9'>     </span>{}   "
+  },
+  "dwl/window": {
+    "format": "      {}  "
+  }
+}
